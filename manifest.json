@@ -1,7 +1,7 @@
 {
   "id": "tabbi",
   "name": "Tabbi",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "minAppVersion": "1.4.0",
   "description": "⌘Tab for your Obsidian tabs. Hold, tap, release — jump to the tab you actually want, ordered by what you used last.",
   "author": "Junru Pu",

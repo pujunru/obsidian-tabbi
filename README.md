@@ -77,7 +77,28 @@ tag instead.
 
 ## Install
 
-Not in the community plugin directory yet. Until then:
+Not in the community plugin directory yet. Two ways in the meantime.
+
+### Via BRAT (recommended)
+
+[BRAT](https://github.com/TfTHacker/obsidian42-brat) installs plugins straight
+from GitHub and keeps them updated.
+
+1. Install **BRAT** from Obsidian's community plugins and enable it.
+2. Run **BRAT: Add a beta plugin for testing** from the command palette.
+3. Paste `pujunru/obsidian-tabbi` and confirm.
+4. Enable **Tabbi** under **Settings → Community plugins**.
+
+Future releases arrive automatically.
+
+### Manually
+
+Grab `main.js`, `manifest.json`, and `styles.css` from the
+[latest release](https://github.com/pujunru/obsidian-tabbi/releases/latest),
+drop them into `<your-vault>/.obsidian/plugins/tabbi/`, and enable Tabbi under
+**Settings → Community plugins**.
+
+### From source
 
 ```sh
 git clone https://github.com/pujunru/obsidian-tabbi.git
@@ -85,10 +106,6 @@ cd obsidian-tabbi
 npm install
 npm run build
 ```
-
-Copy `main.js`, `manifest.json`, and `styles.css` into
-`<your-vault>/.obsidian/plugins/tabbi/`, then enable Tabbi under **Settings →
-Community plugins**.
 
 `npm run dev` rebuilds on save.
 
