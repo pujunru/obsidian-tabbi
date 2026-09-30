@@ -1,0 +1,33 @@
+{
+  "name": "obsidian-tabbi",
+  "version": "1.0.0",
+  "description": "\u2318Tab for your Obsidian tabs",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "node esbuild.config.mjs production"
+  },
+  "keywords": [
+    "obsidian",
+    "obsidian-plugin",
+    "tab-switcher",
+    "mru",
+    "productivity"
+  ],
+  "author": "Junru Pu",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "builtin-modules": "^3.3.0",
+    "esbuild": "0.20.2",
+    "obsidian": "latest",
+    "typescript": "^5.4.0"
+  },
+  "allowScripts": {
+    "esbuild@0.20.2": true
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pujunru/obsidian-tabbi.git"
+  }
+}

@@ -1,0 +1,120 @@
+.tabbi-backdrop {
+	position: fixed;
+	inset: 0;
+	z-index: var(--layer-modal, 100);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: auto;
+}
+
+.tabbi-panel {
+	--tabbi-rows: 10;
+	--tabbi-row-height: 44px;
+	display: flex;
+	flex-direction: column;
+	width: min(680px, 84vw);
+	/* Height is a whole number of rows, so a scrolling list always cuts
+	   through a row boundary rather than mid-text. */
+	max-height: min(calc(var(--tabbi-rows) * var(--tabbi-row-height) + 16px), 76vh);
+	overflow-y: auto;
+	padding: 8px;
+	border-radius: 14px;
+	background: var(--background-secondary);
+	border: 1px solid var(--background-modifier-border);
+	box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+	backdrop-filter: blur(24px);
+	scrollbar-width: thin;
+}
+
+.theme-dark .tabbi-panel {
+	background: rgba(40, 40, 44, 0.9);
+}
+
+.theme-light .tabbi-panel {
+	background: rgba(246, 246, 248, 0.94);
+}
+
+.tabbi-item {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-height: var(--tabbi-row-height);
+	padding: 5px 12px;
+	border-radius: 8px;
+	cursor: pointer;
+	/* Lets the text block shrink so ellipsis can engage. */
+	min-width: 0;
+	transition: background-color 80ms ease;
+}
+
+.tabbi-item.is-selected {
+	background: var(--interactive-accent);
+}
+
+.tabbi-text {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1px;
+	min-width: 0;
+	flex: 1;
+}
+
+.tabbi-title {
+	font-size: var(--font-ui-small);
+	line-height: 1.3;
+	color: var(--text-normal);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.tabbi-item.is-selected .tabbi-title {
+	color: var(--text-on-accent);
+	font-weight: var(--font-semibold);
+}
+
+.tabbi-path {
+	font-size: var(--font-ui-smaller);
+	line-height: 1.3;
+	color: var(--text-faint);
+	white-space: nowrap;
+	/* Truncate long paths from the left: the tail (folder + filename) is the
+	   part that identifies the note, so that is what must stay on screen. */
+	overflow: hidden;
+	text-overflow: ellipsis;
+	direction: rtl;
+	text-align: left;
+}
+
+/* direction:rtl reorders leading punctuation, so pin the path back to LTR
+   while leaving the overflow clipping at the start of the string. The mark is
+   zero-width in effect but still lays out a glyph box, so collapse it to keep
+   truncated and untruncated rows on the same left edge. */
+.tabbi-path::before {
+	content: "\200E";
+	display: inline-block;
+	width: 0;
+	overflow: hidden;
+}
+
+.tabbi-item.is-selected .tabbi-path {
+	color: var(--text-on-accent);
+	opacity: 0.75;
+}
+
+.tabbi-tag {
+	flex-shrink: 0;
+	padding: 1px 7px;
+	border-radius: 4px;
+	font-size: var(--font-ui-smaller);
+	background: var(--background-modifier-border);
+	color: var(--text-muted);
+	text-transform: lowercase;
+}
+
+.tabbi-item.is-selected .tabbi-tag {
+	background: rgba(255, 255, 255, 0.22);
+	color: var(--text-on-accent);
+}
